@@ -1,0 +1,78 @@
+_schema-version: "3.2"
+ID: ns.myui5project
+version: 0.0.1
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm install
+        - npm run build:workspaces
+modules:
+  - name: ns.myui5project-destination-content
+    type: com.sap.application.content
+    requires:
+      - name: ns.myui5project-auth
+      - name: ns.myui5project-html-repo-host
+      - name: ns.myui5project-destination-service
+        parameters:
+          content-target: true
+    parameters:
+      content:
+        instance:
+          existing_destinations_policy: update
+          destinations:
+            - Name: ns.myui5project-html-repo-host
+              ServiceInstanceName: ns.myui5project-html-repo-host
+              ServiceKeyName: ns.myui5project-html-repo-host-key
+              sap.cloud.service: basic.service
+            - Name: ns.myui5project-auth
+              ServiceInstanceName: ns.myui5project-auth
+              ServiceKeyName: ns.myui5project-auth-key
+              sap.cloud.service: basic.service
+              Authentication: OAuth2UserTokenExchange
+    build-parameters:
+      no-source: true
+  - name: ns.myui5project-ui-deployer
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: ns.myui5project-html-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            - dist/myui5app-content.zip
+          name: myui5app
+          target-path: resources/
+  - name: myui5app
+    type: html5
+    path: myui5app
+    build-parameters:
+      supported-platforms: []
+resources:
+  - name: ns.myui5project-destination-service
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-name: ns.myui5project-destination-service
+      service-plan: lite
+      config:
+        HTML5Runtime_enabled: true
+        version: 0.0.1
+  - name: ns.myui5project-html-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+      service-keys:
+        - name: ns.myui5project-html-repo-host-key
+  - name: ns.myui5project-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service: xsuaa
+      service-plan: application
+      service-keys:
+        - name: ns.myui5project-auth-key
