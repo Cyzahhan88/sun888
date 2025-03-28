@@ -70,13 +70,168 @@
             </layout:VerticalLayout>
             <layout:VerticalLayout id="_IDGenVerticalLayout2">
                 Label id="labelOrder" text="Units on Order" />
-                <ObjectAttribute id="attrOrder" text="{UnitsOnOrder}" />
+                <ObjectAttribute
+                    id="attrOrder"
+                    text="{UnitsOnOrder}"
+                />
             </layout:VerticalLayout>
 
             <layout:VerticalLayout id="_IDGenVerticalLayout3">
-                 <Label id="labelState" text="Discontinued" />
-                <ObjectAttribute id="attrState" text="{= ${discontinued} ? 'Yes' : 'No' }" />
+                <Label
+                    id="labelState"
+                    text="Discontinued"
+                />
+                <ObjectAttribute
+                    id="attrState"
+                    text="{= ${discontinued} ? 'Yes' : 'No' }"
+                />
             </layout:VerticalLayout>
         </uxapp:headerContent>
+
+        <uxap:sections>
+            <uxap:ObjectPageSection
+                id="pageSectionsSupplier"
+                title="supplier"
+            >
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection
+                        id="SubSectionInfo"
+                        title=""
+                    >
+                        <uxap:blocks>
+                            <form:SimpleForm
+                                id="formInfo"
+                                title="Info"
+                                editable="false"
+                                layout="ResponsiveGridLayout"
+                            >
+                                <form:content>
+                                    <Label
+                                        id="labelCName"
+                                        text="Company Name"
+                                    />
+                                    <Text
+                                        id="textCName"
+                                        text="{Supplier/CompanyName}"
+                                    />
+                                    <Label
+                                        id="labelWebsite"
+                                        text="Website"
+                                    />
+                                    <Link
+                                        id="linkWebsite"
+                                        text="{= ${Supplier/HomePage}.split('#')[0] }"
+                                        href="{= ${Supplier/HomePage}.split('#')[1] }"
+                                        target="_blank"
+                                    />
+                                </form:content>
+                            </form:SimpleForm>
+
+                            <form:SimpleForm
+                                id="formAddress"
+                                title="Address"
+                                editable="false"
+                                layout="ResponsiveGridLayout"
+                            >
+                                <form:content>
+                                    <Label
+                                        id="lableStreet"
+                                        text="Street"
+                                    />
+                                    <Text
+                                        id="textStreet"
+                                        text="{Supplier/Address}"
+                                    />
+
+                                    <Label
+                                        id="lableCity"
+                                        text="City"
+                                    />
+                                    <Text
+                                        id="textCity"
+                                        text="{Supplier/City}"
+                                    />
+
+                                    <Label
+                                        id="labelRegion"
+                                        text="Region"
+                                    />
+                                    <Text
+                                        id="textRegion"
+                                        text="{Supplier/Region}"
+                                    />
+                                    <Label
+                                        id="labelCountry"
+                                        text="Country"
+                                    />
+                                    <Text
+                                        id="textCountry"
+                                        text="{Supplier/Country}"
+                                    />
+                                    <Label
+                                        id="labelCode"
+                                        text="Postal Code"
+                                    />
+                                    <Text
+                                        id="textCode"
+                                        text="{Supplier/PostalCode}"
+                                    />
+                                </form:content>
+                            </form:SimpleForm>
+                            <form:SimpleForm
+                                id="fromContact"
+                                title="Contact"
+                                editable="false"
+                                layout="ResponsiveGridLayout"
+                            >
+                                <form:content>
+                                    Label id="labelTitle" text="Title" />
+                                    <Text
+                                        id="textTitle"
+                                        text="{Supplier/ContactTitle}"
+                                    />
+                                    <Label
+                                        id="labelContactName"
+                                        text="Name"
+                                    />
+                                    <Text
+                                        id="textContactName"
+                                        text="{Supplier/ContactName}"
+                                    />
+                                    <Label
+                                        id="labelPhone"
+                                        text="Phone"
+                                    />
+                                    <Text
+                                        id="textPhone"
+                                        text="{Supplier/Phone}"
+                                    />
+                                    <Label
+                                        id="labelFax"
+                                        text="Fax"
+                                    />
+                                    <Text
+                                        id="textFax"
+                                        text="{Supplier/Fax}"
+                                    />
+                                </form:content>
+                            </form:SimpleForm>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection
+                id="pageSectionCategory"
+                title="Category"
+            >
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection
+                        id="ssubSectionCategory"
+                        title=""
+                    />
+                </uxap:subSections>
+                
+            </uxap:ObjectPageSection>
+        </uxap:sections>
     </uxap:ObjectPageLayout>
 </mvc:View>
