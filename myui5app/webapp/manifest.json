@@ -27,6 +27,17 @@
                     "icon": "sap-icon://add"
                 }
             }
+        },
+        "dataSources": {
+            "defaultDataSource": {
+                "uri": "/V2/Northwind/Northwind.svc/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
         }
     },
     "sap.ui": {
@@ -64,6 +75,11 @@
                 "settings": {
                     "bundleName": "myui5app.i18n.i18n"
                 }
+            },
+            "": {
+                "dataSource": "defaultDataSource",
+                "preload": true,
+                "settings": {}
             }
         },
         "resources": {
@@ -85,10 +101,24 @@
             },
             "routes": [
                 {
-                    "name": "RouteMainView",
+                    "name": "RouteProducts",
                     "pattern": ":?query:",
                     "target": [
-                        "TargetMainView"
+                        "TargetProducts"
+                    ]
+                },
+                {
+                    "name": "RouteProductDetail",
+                    "pattern": "productdetail/{productId}",
+                    "target": [
+                        "TargetProductDetail"
+                    ]
+                },
+                {
+                    "name": "RouteProductDetail",
+                    "pattern": "productdetail",
+                    "target": [
+                        "TargetProductDetail"
                     ]
                 }
             ],
@@ -97,8 +127,15 @@
                     "viewType": "XML",
                     "transition": "slide",
                     "clearControlAggregation": false,
-                    "viewId": "MainView",
-                    "viewName": "MainView"
+                    "viewId": "Products",
+                    "viewName": "Products"
+                },
+                "TargetProductDetail": {
+                    "viewType": "XML",
+                    "transition": "Slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ProductDetail",
+                    "viewName": "ProductDetail"
                 }
             }
         },
