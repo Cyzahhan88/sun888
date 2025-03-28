@@ -40,13 +40,43 @@
                 objectTitle="{ProductName}"
                 objectSubtitle="{ProductID}"
             >
-            <uxap:actions>
-                    <uxap:ObjectPageHeaderActionButton id="addToCart" icon="sap-icon://cart-4" press="addToCart" tooltip="Add to cart" />
-                    <uxap:ObjectPageHeaderActionButton id="markAsFav" icon="sap-icon://unfavorite" press="markAsFav" tooltip="Mark as favorite" />
+                <uxap:actions>
+                    <uxap:ObjectPageHeaderActionButton
+                        id="addToCart"
+                        icon="sap-icon://cart-4"
+                        press="addToCart"
+                        tooltip="Add to cart"
+                    />
+                    <uxap:ObjectPageHeaderActionButton
+                        id="markAsFav"
+                        icon="sap-icon://unfavorite"
+                        press="markAsFav"
+                        tooltip="Mark as favorite"
+                    />
                 </uxap:actions>
             </uxap:ObjectPageHeader>
         </uxap:headerTitle>
 
-        
+        <uxapp:headerContent>
+            <layout:VerticalLayout id="_IDGenVerticalLayout1">
+                <Label
+                    id="lableUnits"
+                    text="Units  in stock"
+                />
+                <ObjectAttribute
+                    id="aatrUnits"
+                    text="{ UnitsInStock }"
+                />
+            </layout:VerticalLayout>
+            <layout:VerticalLayout id="_IDGenVerticalLayout2">
+                Label id="labelOrder" text="Units on Order" />
+                <ObjectAttribute id="attrOrder" text="{UnitsOnOrder}" />
+            </layout:VerticalLayout>
+
+            <layout:VerticalLayout id="_IDGenVerticalLayout3">
+                 <Label id="labelState" text="Discontinued" />
+                <ObjectAttribute id="attrState" text="{= ${discontinued} ? 'Yes' : 'No' }" />
+            </layout:VerticalLayout>
+        </uxapp:headerContent>
     </uxap:ObjectPageLayout>
 </mvc:View>
