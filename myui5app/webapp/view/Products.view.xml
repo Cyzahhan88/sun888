@@ -4,7 +4,7 @@
     displayBlock="true"
     xmlns="sap.m"
     xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
-    xmlns:smartlist="sap.ui.comp.smartlist"
+    xmlns:smartList="sap.ui.comp.smartlist"
     xmlns:smarttable="sap.ui.comp.smarttable"
 >
    
@@ -30,7 +30,7 @@
                 showFullScreenButton="true"
                 enableAutoBinding="true"
             />
-            <smartList:listItemTemplate>
+            <smartlist:listItemTemplate>
                 <StandardListItem
                     id="listTemplate"
                     type="Navigation"
@@ -39,7 +39,7 @@
                     info="{=$(UnitPrice) + ' €'}"
                     description="{Category/CategoryName}"
                 />
-            </smartList:listItemTemplate>
+           </smartlist:listItemTemplate>
         </smartFilterBar:SmartFilterBar>
     </Page>
 </mvc:View>

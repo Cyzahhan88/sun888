@@ -10,6 +10,13 @@ sap.ui.define([
         return Controller.extend("myui5app.controller.Sales", {
             onInit: function () {
 
+            },
+            onAfterRendering:function(){
+                const oVizFrame=this.oVizFrame=this.getView().byId("idVizFrame");
+
+                const oPopover=this.getView().byId("idPopover");
+
+                Popover.connect(oVizFrame.getVizUid());
             }
         });
     });

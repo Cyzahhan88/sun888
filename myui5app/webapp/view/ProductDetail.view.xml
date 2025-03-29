@@ -6,6 +6,7 @@
     xmlns:form="sap.ui.layout.form"
     xmlns="sap.m"
     displayBlock="true"
+    xmlns:smartList="sap.ui.comp.smartlist"
 >
     <!-- <Page id="page" title="{i18n>productdetail}"> -->
     <!-- <content /> -->
@@ -57,7 +58,7 @@
             </uxap:ObjectPageHeader>
         </uxap:headerTitle>
 
-        <uxapp:headerContent>
+        <uxap:headerContent>
             <layout:VerticalLayout id="_IDGenVerticalLayout1">
                 <Label
                     id="lableUnits"
@@ -86,7 +87,7 @@
                     text="{= ${discontinued} ? 'Yes' : 'No' }"
                 />
             </layout:VerticalLayout>
-        </uxapp:headerContent>
+        </uxap:headerContent>
 
         <uxap:sections>
             <uxap:ObjectPageSection
